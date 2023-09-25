@@ -52,6 +52,7 @@ const btnNext = document.getElementById("btnNext");
 const rbAnswer = document.getElementsByName('answer'); // radiobuttons (fleirtal)
 const inputForm = document.getElementById('valgomatForm');
 const resultatContainer = document.getElementById("resulat-container");
+const formContainer = document.querySelector(".form-container");
 
 btnNext.addEventListener('click', nextQuestion);
 
@@ -99,7 +100,10 @@ function calculateResult(questionIDX, chosen) {
 function showResult() {
     // Konverter objektet til et array av nøkkel-verdi-par
     let entries = Object.entries(partyScores);
-    resultatContainer.style="display: flex; flex-direction: column; align-items: center;";
+    resultatContainer.style =
+    "display: flex; flex - direction: column; align - items: center;";
+
+    formContainer.style = "display: none";
 
     // Sorter arrayet etter verdiene i stigende rekkefølge
     entries.sort ((a, b) => b [1] - a [1]);

@@ -11,27 +11,33 @@
 
 <body>
     <main>
-        <h1 style="margin: 0">Valgomat</h1>
+        <h1 style="margin: 0">Valgomat 2023 Sturla</h1>
 
         <div class="form-container">
             <form id="valgomatForm">
                 <h2 id="question"></h2>
                 <div class="answers">
-                    <input type="radio" name="answer" value="enig">
-                    <p>Enig</p>
-                    <input type="radio" name="answer" value="uenig">
-                    <p>Uenig</p>
+                    <div class="enig">
+                        <input type="radio" name="answer" value="enig">
+                        <p>Enig</p>
+                    </div>
+                    <div class="uenig">
+                        <input type="radio" name="answer" value="uenig">
+                        <p>Uenig</p>
+                    </div>
                 </div>
                 <button id="btnNext" type="button">Neste</button>
             </form>
         </div>
 
         <div id="resulat-container">
-            <h2>Ditt resultat:</h2>
-            <p id="result">
-                Gjør ferdig spørsmålene først.
-                <!-- Fylles ut av JS -->
-            </p>
+            <div class="result-card">
+                <h2>Ditt resultat:</h2>
+                <p id="result">
+                    Gjør ferdig spørsmålene først.
+                    <!-- Fylles ut av JS -->
+                </p>
+            </div>
         </div>
     </main>
 </body>
