@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+main {
+  height: 100vh;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
+
+main h1 {
+    text-align: center;
+    padding: 1rem;
+}
+
+main #resulat-container {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+main #resulat-container p {
+    margin: 0;
+}
+
+#valgomatForm .answers {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+#valgomatForm h2 {
+    text-align: center;
+    font-weight: 400;
+}
+
+#valgomatForm .answers input {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+#valgomatForm .answers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    margin: auto 0;
+}
+
+form {
+    display: flex;
+    width: 500px;
+    height: 300px;
+    border-radius: 5px;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+form button {
+    margin: 1.5rem auto;
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    align-items: center;
+    background-color: black;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+}

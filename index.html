@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enkel Valgomat</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="valgomat.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1 style="margin: 0">Valgomat</h1>
+
+        <div class="form-container">
+            <form id="valgomatForm">
+                <h2 id="question"></h2>
+                <div class="answers">
+                    <input type="radio" name="answer" value="enig">
+                    <p>Enig</p>
+                    <input type="radio" name="answer" value="uenig">
+                    <p>Uenig</p>
+                </div>
+                <button id="btnNext" type="button">Neste</button>
+            </form>
+        </div>
+
+        <div id="resulat-container">
+            <h2>Ditt resultat:</h2>
+            <p id="result">
+                Gjør ferdig spørsmålene først.
+                <!-- Fylles ut av JS -->
+            </p>
+        </div>
+    </main>
+</body>
+
+</html>
