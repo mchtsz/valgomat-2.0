@@ -17,7 +17,7 @@ main {
 
 main h1 {
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 0;
 }
 
 main #resulat-container {
