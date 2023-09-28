@@ -235,7 +235,7 @@ const questions = [
 ];
 
 // Her lagrast resultata undervegs - basert på kva du velgjer når du trykker på einig - uenig
-const partyScores = {
+let partyScores = {
   FRP: 0,
   H: 0,
   V: 0,
@@ -254,12 +254,12 @@ const formContainer = document.querySelector(".form-container");
 
 btnNext.addEventListener("click", nextQuestion);
 
-const questionIDX = 0;
+let questionIDX = 0;
 
 questionText.innerHTML = questions[questionIDX].question;
 
 function nextQuestion() {
-  const radioChecked = document.querySelector('input[name="answer"]:checked'); // henter hvilken radioknapp som er valgt
+  let radioChecked = document.querySelector('input[name="answer"]:checked'); // henter hvilken radioknapp som er valgt
 
   if (radioChecked) {
     calculateResult(questionIDX, radioChecked.value); // regner ut resultatet
@@ -282,7 +282,7 @@ function nextQuestion() {
 function calculateResult(questionIDX, chosen) {
   console.log("Spørsmåls-ID: " + questionIDX + ", valgt: " + chosen);
 
-  const partyChoices = questions[questionIDX][chosen]; // Henter ut partiene og poengene for det valgte svaret
+  let partyChoices = questions[questionIDX][chosen]; // Henter ut partiene og poengene for det valgte svaret
   console.log("partyChoices: ");
   console.log(partyChoices);
 
@@ -296,7 +296,7 @@ function calculateResult(questionIDX, chosen) {
 
 function showResult() {
   // Konverter objektet til et array av nøkkel-verdi-par
-  const entries = Object.entries(partyScores);
+  let entries = Object.entries(partyScores);
   resultatContainer.style =
     "display: flex; flex - direction: column; align - items: center;";
 
@@ -306,13 +306,13 @@ function showResult() {
   entries.sort((a, b) => b[1] - a[1]);
 
   // Konverter arrayet tilbake til et objekt
-  const sortedPartyScores = Object.fromEntries(entries);
+  let sortedPartyScores = Object.fromEntries(entries);
 
   console.log("Sortert etter poengsum: ");
   console.log(sortedPartyScores);
 
   // Skriver ut resultatet til HTML
-  const resultBox = document.getElementById("result");
+  let resultBox = document.getElementById("result");
   resultBox.innerHTML = "";
 
   for (let party in sortedPartyScores) {
