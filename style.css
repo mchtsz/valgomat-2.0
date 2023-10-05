@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+button {
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+[type="radio"]:hover {
+    transition: 0.2s ease-in-out;
+    transform: scale(1.1);
+}
+
+button:hover {
+    transform: scale(1.2);
+}
+
 body {
   margin: 0;
   padding: 0;
