@@ -1,50 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 button {
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+[type="radio"] {
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
 
 [type="radio"]:hover {
-    transition: 0.2s ease-in-out;
-    transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+[type="radio"]:checked {
+  transform: scale(1.1);
 }
 
 button:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 body {
   margin: 0;
   padding: 0;
-    font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 body h1 {
-    color: #fff;
+  color: #000;
+  font-weight: 500;
 }
 
 main {
   height: 100vh;
-  background: #000;
 }
 
 main h1 {
-    text-align: center;
-    padding: 2rem 0;
+  text-align: center;
+  padding: 2rem 0;
 }
 
 main #resulat-container {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    height: 80%;
-    align-items: center;
-    justify-content: center;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
 }
 
 main #resulat-container p {
-    margin: 0;
+  margin: 0;
+}
+
+#valgomatForm {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #valgomatForm .answers {
@@ -52,11 +64,12 @@ main #resulat-container p {
   flex-direction: row;
   gap: 0.2rem;
   align-items: center;
+  margin: 1.5rem 0;
 }
 
 #valgomatForm h2 {
-    text-align: center;
-    font-weight: 400;
+  text-align: center;
+  font-weight: 400;
 }
 
 #valgomatForm .answers input {
@@ -65,61 +78,79 @@ main #resulat-container p {
 }
 
 #valgomatForm .answers {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 .enig {
-    display: flex;
-    align-items: center;
+  display: flex;
+  gap: 1rem;
 }
 
-.uenig  {
-    display: flex;
-    align-items: center;
+.uenig {
+  display: flex;
+  gap: 1rem;
 }
 
 .form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-    margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  margin: auto 0;
 }
 
 form {
-    display: flex;
-    padding: 1rem;
-    width: 450px;
-    height: 300px;
-    border-radius: 5px;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #fff;
+  display: flex;
+  padding: 1rem;
+  width: 450px;
+  height: 300px;
+  border-radius: 5px;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fff;
 }
 
 form button {
-    margin: 1.5rem auto;
-    width: 150px;
-    height: 50px;
-    border-radius: 5px;
-    align-items: center;
-    background-color: black;
-    color: #fff;
-    font-weight: bold;
-    border: none;
+  margin: 0 auto;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  align-items: center;
+  background-color: black;
+  color: #fff;
+  font-weight: bold;
+  border: none;
 }
 
 .result-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #fff;
-    width: 500px;
-    height: 300px;
-    border-radius: 5px;
-    gap: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  height: 300px;
+  border-radius: 5px;
+  gap: 1rem;
+}
+
+.result-card h2 {
+  text-align: center;
+  font-weight: 400;
+}
+
+.result-card p {
+  text-align: center;
+  font-size: 18px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
 }
