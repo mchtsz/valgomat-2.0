@@ -1,217 +1,3 @@
-const questions = [
-  // NB: Dette er ein array med objekt (ikkje map)
-  {
-    question: "Bør vi ha lekser på skolen?",
-    enig: {
-      FRP: 2,
-      H: 3,
-      V: 1,
-      KRF: 1,
-      SP: 2,
-      MDG: 5,
-      AP: 4,
-    },
-    uenig: {
-      FRP: 1,
-      H: 2,
-      V: 3,
-      KRF: 3,
-      SP: 4,
-      MDG: 5,
-      AP: 2,
-    },
-  },
-  {
-    question: "Bør vi gi pengestøtte til bønder?",
-    enig: {
-      FRP: 4,
-      H: 3,
-      V: 2,
-      KRF: 5,
-      SP: 5,
-      MDG: 1,
-      AP: 2,
-    },
-    uenig: {
-      FRP: 1,
-      H: 2,
-      V: 3,
-      KRF: 1,
-      SP: 2,
-      MDG: 3,
-      AP: 4,
-    },
-  },
-  {
-    question: "Bør vi gi pengestøtte til kunstnere?",
-    enig: {
-      FRP: 3,
-      H: 4,
-      V: 2,
-      KRF: 1,
-      SP: 2,
-      MDG: 5,
-      AP: 5,
-    },
-    uenig: {
-      FRP: 2,
-      H: 1,
-      V: 3,
-      KRF: 4,
-      SP: 4,
-      MDG: 1,
-      AP: 1,
-    },
-  },
-  {
-    question: "Bør vi senke skattene?",
-    enig: {
-      FRP: 5,
-      H: 4,
-      V: 3,
-      KRF: 2,
-      SP: 2,
-      MDG: 1,
-      AP: 1,
-    },
-    uenig: {
-      FRP: 1,
-      H: 2,
-      V: 3,
-      KRF: 4,
-      SP: 4,
-      MDG: 5,
-      AP: 5,
-    },
-  },
-  {
-    question: "Bør vi ha strengere straffer?",
-    enig: {
-      FRP: 4,
-      H: 3,
-      V: 2,
-      KRF: 2,
-      SP: 1,
-      MDG: 0,
-      AP: 2,
-    },
-    uenig: {
-      FRP: 0,
-      H: 1,
-      V: 2,
-      KRF: 3,
-      SP: 4,
-      MDG: 5,
-      AP: 3,
-    },
-  },
-  {
-    question: "Bør vi finne nye oljefelt?",
-    enig: {
-      FRP: 5,
-      H: 4,
-      V: 3,
-      KRF: 0,
-      SP: 0,
-      MDG: 0,
-      AP: 0,
-    },
-    uenig: {
-      FRP: 0,
-      H: 0,
-      V: 0,
-      KRF: 0,
-      SP: 0,
-      MDG: 5,
-      AP: 4,
-    },
-  },
-  {
-    question: "Bør vi få flere private sykehus?",
-    enig: {
-      FRP: 4,
-      H: 3,
-      V: 5,
-      KRF: 2,
-      SP: 0,
-      MDG: 0,
-      AP: 1,
-    },
-    uenig: {
-      FRP: 0,
-      H: 0,
-      V: 0,
-      KRF: 0,
-      SP: 5,
-      MDG: 5,
-      AP: 5,
-    },
-  },
-  {
-    question: "Bør vi beholde kontantstøtten?",
-    enig: {
-      FRP: 4,
-      H: 3,
-      V: 2,
-      KRF: 2,
-      SP: 0,
-      MDG: 0,
-      AP: 1,
-    },
-    uenig: {
-      FRP: 0,
-      H: 0,
-      V: 0,
-      KRF: 0,
-      SP: 5,
-      MDG: 5,
-      AP: 5,
-    },
-  },
-  {
-    question:
-      "Bør leger ha muligheten til å reservere seg mot å henvise til abort?",
-    enig: {
-      FRP: 4,
-      H: 4,
-      V: 2,
-      KRF: 4,
-      SP: 0,
-      MDG: 0,
-      AP: 2,
-    },
-    uenig: {
-      FRP: 0,
-      H: 0,
-      V: 0,
-      KRF: 0,
-      SP: 5,
-      MDG: 5,
-      AP: 3,
-    },
-  },
-  {
-    question: "Bør vi ta imot flere flyktninger?",
-    enig: {
-      FRP: 0,
-      H: 4,
-      V: 3,
-      KRF: 2,
-      SP: 1,
-      MDG: 5,
-      AP: 5,
-    },
-    uenig: {
-      FRP: 7,
-      H: 0,
-      V: 0,
-      KRF: 0,
-      SP: 0,
-      MDG: 0,
-      AP: 0,
-    },
-  },
-];
 let partyScores = {
   FRP: 0,
   H: 0,
@@ -222,6 +8,67 @@ let partyScores = {
   MDG: 0,
 };
 
+class Question {
+  constructor(question, enig, uenig) {
+    this.question = question;
+    this.enig = enig;
+    this.uenig = uenig;
+  }
+}
+
+// Create an array of Question objects
+const questions = [
+  new Question(
+    "Bør vi ha lekser på skolen?",
+    { FRP: 2, H: 3, V: 1, KRF: 1, SP: 2, MDG: 5, AP: 4 },
+    { FRP: 1, H: 2, V: 3, KRF: 3, SP: 4, MDG: 5, AP: 2 }
+  ),
+  new Question(
+    "Bør vi gi pengestøtte til bønder?",
+    { FRP: 4, H: 3, V: 2, KRF: 5, SP: 5, MDG: 1, AP: 2 },
+    { FRP: 1, H: 2, V: 3, KRF: 1, SP: 2, MDG: 3, AP: 4 }
+  ),
+  new Question(
+    "Bør vi gi pengestøtte til kunstnere?",
+    { FRP: 3, H: 4, V: 2, KRF: 1, SP: 2, MDG: 5, AP: 5 },
+    { FRP: 2, H: 1, V: 3, KRF: 4, SP: 4, MDG: 1, AP: 1 }
+  ),
+  new Question(
+    "Bør vi senke skattene?",
+    { FRP: 5, H: 4, V: 3, KRF: 2, SP: 2, MDG: 1, AP: 1 },
+    { FRP: 1, H: 2, V: 3, KRF: 4, SP: 4, MDG: 5, AP: 5 }
+  ),
+  new Question(
+    "Bør vi ha strengere straffer?",
+    { FRP: 4, H: 3, V: 2, KRF: 2, SP: 1, MDG: 0, AP: 2 },
+    { FRP: 0, H: 1, V: 2, KRF: 3, SP: 4, MDG: 5, AP: 3 }
+  ),
+  new Question(
+    "Bør vi finne nye oljefelt?",
+    { FRP: 5, H: 4, V: 3, KRF: 0, SP: 0, MDG: 0, AP: 0 },
+    { FRP: 0, H: 0, V: 0, KRF: 0, SP: 0, MDG: 5, AP: 4 }
+  ),
+  new Question(
+    "Bør vi få flere private sykehus?",
+    { FRP: 4, H: 3, V: 5, KRF: 2, SP: 0, MDG: 0, AP: 1 },
+    { FRP: 0, H: 0, V: 0, KRF: 0, SP: 5, MDG: 5, AP: 5 }
+  ),
+  new Question(
+    "Bør vi beholde kontantstøtten?",
+    { FRP: 4, H: 3, V: 2, KRF: 2, SP: 0, MDG: 0, AP: 1 },
+    { FRP: 0, H: 0, V: 0, KRF: 0, SP: 5, MDG: 5, AP: 5 }
+  ),
+  new Question(
+    "Bør leger ha muligheten til å reservere seg mot å henvise til abort?",
+    { FRP: 4, H: 4, V: 2, KRF: 4, SP: 0, MDG: 0, AP: 2 },
+    { FRP: 0, H: 0, V: 0, KRF: 0, SP: 5, MDG: 5, AP: 3 }
+  ),
+  new Question(
+    "Bør vi ta imot flere flyktninger?",
+    { FRP: 0, H: 4, V: 3, KRF: 2, SP: 1, MDG: 5, AP: 5 },
+    { FRP: 7, H: 0, V: 0, KRF: 0, SP: 0, MDG: 0, AP: 0 }
+  ),
+];
 const questionText = document.getElementById("question"); // Der me skriv ut spørsmålet
 const btnNext = document.getElementById("btnNext");
 const rbAnswer = document.getElementsByName("answer"); // radiobuttons (fleirtal)
@@ -242,11 +89,14 @@ function nextQuestion() {
   let radioChecked = document.querySelector('input[name="answer"]:checked');
 
   if (radioChecked) {
-    calculateResult(questionIDX, radioChecked.value);
+    const chosen = radioChecked.value;
+    calculateResult(questionIDX, chosen);
     questionIDX++;
+
     if (questionIDX < questions.length) {
       radioChecked.checked = false;
-      questionText.innerHTML = questions[questionIDX].question;
+      const currentQuestion = questions[questionIDX];
+      questionText.innerHTML = currentQuestion.question;
 
       // Calculate progress and update the progress bar
       progress = (questionIDX / totalQuestions) * 100;

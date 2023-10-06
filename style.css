@@ -194,3 +194,44 @@ form button {
 .party-highlight {
   background-color: #308eb3; /* Color for the winning party */
 }
+
+/* Style for party scores */
+.party-scores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.party-score {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.party-image {
+  width: 40px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
+  margin-right: 10px;
+  border-radius: 50%; /* To make the image circular */
+  overflow: hidden;
+}
+
+.party-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.party-bar {
+  flex-grow: 1;
+  height: 20px; /* Adjust the height of the score bar */
+  background-color: #ccc; /* Background color of the score bar */
+  border-radius: 5px; /* Rounded corners for the score bar */
+  margin-right: 5px;
+  position: relative;
+}
+
+.party-score-value {
+  position: absolute;
+  right: 5px;
+  font-weight: bold;
+}
