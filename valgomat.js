@@ -130,10 +130,21 @@ function calculateResult(questionIDX, chosen) {
 }
 
 function showResult() {
+  // Define a mapping of party names to colors
+  const partyColors = {
+    FRP: "teal",
+    H: "blue",
+    V: "lime",
+    KRF: "yellow",
+    SP: "green",
+    AP: "red",
+    MDG: "darkgreen",
+  };
+
   // Konverter objektet til et array av nøkkel-verdi-par
   let entries = Object.entries(partyScores);
   resultatContainer.style =
-    "display: flex; flex - direction: column; align - items: center;";
+    "display: flex; flex-direction: column; align-items: center;";
 
   formContainer.style = "display: none";
 
@@ -150,7 +161,43 @@ function showResult() {
   let resultBox = document.getElementById("result");
   resultBox.innerText = "";
 
+  let partyIndex = 0; // Used to track the index of the party
+  let highestScore = Object.values(sortedPartyScores)[0]; // Get the highest score
+
   for (let party in sortedPartyScores) {
-    resultBox.innerHTML += party + ": " + sortedPartyScores[party] + "<br>";
+    // Calculate the width based on the percentage of the score relative to the highest score
+    let widthPercentage = (sortedPartyScores[party] / highestScore) * 100;
+
+    // Create a container for each party with title and score
+    let partyContainer = document.createElement("div");
+    partyContainer.style.display = "flex";
+    partyContainer.style.alignItems = "center";
+    partyContainer.style.marginBottom = "10px"; // Add spacing below each div
+
+    // Create a div for the party title
+    let partyTitleDiv = document.createElement("div");
+    partyTitleDiv.innerText = party;
+    partyTitleDiv.style.flex = "1"; // Ensure it takes up available space
+
+    // Create a div for the party score
+    let partyScoreDiv = document.createElement("div");
+    partyScoreDiv.innerText = sortedPartyScores[party];
+    partyScoreDiv.style.width = "40px"; // Set default width
+    partyScoreDiv.style.minWidth = "40px"; // Set minimum width
+    partyScoreDiv.style.backgroundColor = partyColors[party]; // Assign the party's color
+
+    // Set the width of the score div based on the calculated percentage
+    if (widthPercentage > 40) {
+      partyScoreDiv.style.width = widthPercentage + "px"; // Adjust width if it's greater than 40px
+    }
+
+    // Append the title and score divs to the party container
+    partyContainer.appendChild(partyTitleDiv);
+    partyContainer.appendChild(partyScoreDiv);
+
+    // Append the party container to the result box
+    resultBox.appendChild(partyContainer);
+
+    partyIndex++; // Increment the party index
   }
 }
