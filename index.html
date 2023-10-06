@@ -6,18 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enkel Valgomat</title>
     <link rel="stylesheet" href="style.css">
-    <link 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script 
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script defer src="valgomat.js"></script>
 </head>
 
 <body>
     <main>
-        <h1 style="margin: 0">Valgomat 2023</h1>
-
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
         <div class="form-container">
             <form id="valgomatForm">
                 <h2 id="question"></h2>
@@ -38,15 +34,10 @@
         <div id="resulat-container">
             <div class="result-card">
                 <h2>Ditt resultat:</h2>
-                <p id="result">
-                    Gjør ferdig spørsmålene først.
-                    <!-- Fylles ut av JS -->
-                </p>
+                <div class="party-scores" id="result">
+                    <!-- Party score bars will be inserted here dynamically -->
+                </div>
             </div>
-        </div>
-
-        <div class="progress-bar">
-            <div id="progress"></div>
         </div>
     </main>
 </body>

@@ -212,8 +212,6 @@ const questions = [
     },
   },
 ];
-
-// Her lagrast resultata undervegs - basert på kva du velgjer når du trykker på einig - uenig
 let partyScores = {
   FRP: 0,
   H: 0,
@@ -230,27 +228,35 @@ const rbAnswer = document.getElementsByName("answer"); // radiobuttons (fleirtal
 const inputForm = document.getElementById("valgomatForm");
 const resultatContainer = document.getElementById("resulat-container");
 const formContainer = document.querySelector(".form-container");
+const progressBar = document.getElementById("progress");
+const totalQuestions = questions.length;
 
 btnNext.addEventListener("click", nextQuestion);
 
 let questionIDX = 0;
+let progress = 0;
 
 questionText.innerHTML = questions[questionIDX].question;
 
 function nextQuestion() {
-  let radioChecked = document.querySelector('input[name="answer"]:checked'); // henter hvilken radioknapp som er valgt
+  let radioChecked = document.querySelector('input[name="answer"]:checked');
 
   if (radioChecked) {
-    calculateResult(questionIDX, radioChecked.value); // regner ut resultatet
-    questionIDX++; // øker spørsmåls-ID med 1
+    calculateResult(questionIDX, radioChecked.value);
+    questionIDX++;
     if (questionIDX < questions.length) {
-      // Dersom det er fleire spørsmål igjen
       radioChecked.checked = false;
-      questionText.innerHTML = questions[questionIDX].question; // Skriver ut neste spørsmål til HTML
+      questionText.innerHTML = questions[questionIDX].question;
+
+      // Calculate progress and update the progress bar
+      progress = (questionIDX / totalQuestions) * 100;
+      progressBar.style.width = progress + "%";
     } else {
-      // Dersom det ikkje er fleire spørsmål igjen så kan me kalle på funksjonen som oppsummer resultatet
-      inputForm.style.display = "none"; // Skjuler skjemaet
+      inputForm.style.display = "none";
       showResult();
+
+      // Set the progress bar width to 100% when the questionnaire is completed
+      progressBar.style.width = "100%";
     }
   } else {
     alert("Du må velge et svaralternativ!");
@@ -297,50 +303,4 @@ function showResult() {
   for (let party in sortedPartyScores) {
     resultBox.innerHTML += party + ": " + sortedPartyScores[party] + "<br>";
   }
-}
-
-function createProgressText(container, parti) {
-  const progressTekst = document.createElement("div");
-  progressTekst.setAttribute("class", "partiTekst");
-  progressTekst.style.fontWeight = "bold";
-  progressTekst.style.fontSize = "22px";
-  progressTekst.style.marginBottom = "3%";
-  progressTekst.style.marginTop = "3%";
-  progressTekst.style.color = parti.partiFarge;
-  progressTekst.innerText = parti.navn;
-  container.appendChild(progressTekst);
-}
-
-function createProgressDivBar(container, parti) {
-  const progressDiv = document.createElement("div");
-  progressDiv.setAttribute("class", "progress");
-  progressDiv.style.width = "90%";
-  progressDiv.style.margin = "auto";
-  container.append(progressDiv);
-
-  const progressBar = document.createElement("div");
-  progressBar.setAttribute(
-    "class",
-    "progress-bar",
-    "role",
-    "progressbar",
-    "aria-valuenow",
-    (parti.poeng / Object.keys(spørsmål).length) * 100,
-    "aria-valuemin",
-    "0",
-    "aria-valuemax",
-    "100"
-  );
-  progressBar.style.width = "0%";
-  progressBar.innerText = "0%";
-  progressBar.style.backgroundColor = parti.partiFarge;
-  progressDiv.appendChild(progressBar);
-  setTimeout(() => {
-    progressBar.style.transition = "width 1s ease-in-out";
-    progressBar.style.width =
-      (parti.poeng / Object.keys(spørsmål).length) * 100 + "%";
-    progressBar.innerText =
-      Number(Math.round((parti.poeng / Object.keys(spørsmål).length) * 100)) +
-      "%";
-  }, 250);
 }
