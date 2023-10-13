@@ -17,7 +17,7 @@ class Question {
 }
 
 // Create an array of Question objects
-const questions = [
+const questionArray = [
   new Question(
     "Bør vi ha lekser på skolen?",
     { FRP: 2, H: 3, V: 1, KRF: 1, SP: 2, MDG: 5, AP: 4 },
@@ -69,43 +69,45 @@ const questions = [
     { FRP: 7, H: 0, V: 0, KRF: 0, SP: 0, MDG: 0, AP: 0 }
   ),
 ];
-const questionText = document.getElementById("question"); // Der me skriv ut spørsmålet
-const btnNext = document.getElementById("btnNext");
-const rbAnswer = document.getElementsByName("answer"); // radiobuttons (fleirtal)
+const questionText = document.getElementById("question"); // const for å hente ut spørsmålsteksten
+const btnNext = document.getElementById("btnNext"); //henter button med id btnNext
+const rbAnswer = document.getElementsByName("answer"); // radiobutton
 const inputForm = document.getElementById("valgomatForm");
 const resultatContainer = document.getElementById("resulat-container");
 const formContainer = document.querySelector(".form-container");
 const progressBar = document.getElementById("progress");
-const totalQuestions = questions.length;
+const totalQuestions = questionArray.length;
 
 btnNext.addEventListener("click", nextQuestion);
 
 let questionIDX = 0;
 let progress = 0;
 
-questionText.innerHTML = questions[questionIDX].question;
+questionText.innerText = questionArray[questionIDX].question;
 
 function nextQuestion() {
   let radioChecked = document.querySelector('input[name="answer"]:checked');
-
   if (radioChecked) {
     const chosen = radioChecked.value;
     calculateResult(questionIDX, chosen);
     questionIDX++;
 
-    if (questionIDX < questions.length) {
+    
+    if (questionIDX < questionArray.length) {
+      // Reset the radio buttons
       radioChecked.checked = false;
-      const currentQuestion = questions[questionIDX];
+
+      // Viser neste spørsmål
+      const currentQuestion = questionArray[questionIDX];
       questionText.innerHTML = currentQuestion.question;
 
-      // Calculate progress and update the progress bar
+      // Oppdaterer progress bar med å kalkulere hvor mange spørsmål som er besvart
       progress = (questionIDX / totalQuestions) * 100;
       progressBar.style.width = progress + "%";
     } else {
       inputForm.style.display = "none";
       showResult();
-
-      // Set the progress bar width to 100% when the questionnaire is completed
+      // Setter progress bar til 100% når siste spørsmål er besvart
       progressBar.style.width = "100%";
     }
   } else {
@@ -115,22 +117,20 @@ function nextQuestion() {
 
 // Funksjon som regner ut resultatet, får inn spørsmåls-ID og hvilket svar som er valgt (enig/uenig)
 function calculateResult(questionIDX, chosen) {
-  console.log("Spørsmåls-ID: " + questionIDX + ", valgt: " + chosen);
+  //console.log("Spørsmåls-ID: " + questionIDX + ", valgt: " + chosen);
 
-  let partyChoices = questions[questionIDX][chosen]; // Henter ut partiene og poengene for det valgte svaret
-  console.log("partyChoices: ");
-  console.log(partyChoices);
+  // Henter ut partiene og poengene for det valgte svaret
+  let partyChoices = questionArray[questionIDX][chosen];
 
+  // Legger til poengene for det valgte svaret til partiene i partyScores-objektet
   for (let party in partyChoices) {
     partyScores[party] += partyChoices[party];
   }
-
-  console.log("partyScore: ");
-  console.log(partyScores);
 }
 
+// Funksjon som viser resultatet
 function showResult() {
-  // Define a mapping of party names to colors
+  // Objekt som inneholder fargene til partiene
   const partyColors = {
     FRP: "teal",
     H: "blue",
@@ -143,9 +143,7 @@ function showResult() {
 
   // Konverter objektet til et array av nøkkel-verdi-par
   let entries = Object.entries(partyScores);
-  resultatContainer.style =
-    "display: flex; flex-direction: column; align-items: center;";
-
+  resultatContainer.style = "display: flex; flex-direction: column; align-items: center;";
   formContainer.style = "display: none";
 
   // Sorter arrayet etter verdiene i stigende rekkefølge
@@ -154,18 +152,17 @@ function showResult() {
   // Konverter arrayet tilbake til et objekt
   let sortedPartyScores = Object.fromEntries(entries);
 
-  console.log("Sortert etter poengsum: ");
-  console.log(sortedPartyScores);
-
   // Skriver ut resultatet til HTML
-  let resultBox = document.getElementById("result");
+  const resultBox = document.getElementById("result");
   resultBox.innerText = "";
 
-  let partyIndex = 0; // Used to track the index of the party
-  let highestScore = Object.values(sortedPartyScores)[0]; // Get the highest score
+  let partyIndex = 0; // Index for å hente ut partiene fra partyColors-objektet
+  const highestScore = Object.values(sortedPartyScores)[0]; // henter ut den høyeste poengsummen
 
+
+  // which lets could become a const?
   for (let party in sortedPartyScores) {
-    // Calculate the width based on the percentage of the score relative to the highest score
+    // kalkulerer prosentvis bredde for partiene
     let widthPercentage = (sortedPartyScores[party] / highestScore) * 100;
 
     // Create a container for each party with title and score
