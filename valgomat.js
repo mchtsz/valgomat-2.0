@@ -69,6 +69,7 @@ const questionArray = [
     { FRP: 7, H: 0, V: 0, KRF: 0, SP: 0, MDG: 0, AP: 0 }
   ),
 ];
+
 const questionText = document.getElementById("question"); // const for å hente ut spørsmålsteksten
 const btnNext = document.getElementById("btnNext"); //henter button med id btnNext
 const rbAnswer = document.getElementsByName("answer"); // radiobutton
@@ -159,8 +160,6 @@ function showResult() {
   let partyIndex = 0; // Index for å hente ut partiene fra partyColors-objektet
   const highestScore = Object.values(sortedPartyScores)[0]; // henter ut den høyeste poengsummen
 
-
-  // which lets could become a const?
   for (let party in sortedPartyScores) {
     // kalkulerer prosentvis bredde for partiene
     let widthPercentage = (sortedPartyScores[party] / highestScore) * 100;
@@ -169,7 +168,7 @@ function showResult() {
     let partyContainer = document.createElement("div");
     partyContainer.style.display = "flex";
     partyContainer.style.alignItems = "center";
-    partyContainer.style.marginBottom = "10px"; // Add spacing below each div
+    partyContainer.style.marginBottom = "1rem"; // Add spacing below each div
 
     // Create a div for the party title
     let partyTitleDiv = document.createElement("div");
